@@ -1,0 +1,190 @@
+.delivery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+.delivery-container h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.welcome-text {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Active Delivery Section */
+.active-delivery-section {
+    margin-bottom: 40px;
+}
+
+.active-delivery-section h2 {
+    color: #27ae60;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+/* Pending Orders Section */
+.pending-orders-section h2 {
+    color: #3498db;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.no-orders {
+    text-align: center;
+    color: #95a5a6;
+    padding: 40px;
+    font-size: 1.1rem;
+}
+
+/* Orders Grid */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+/* Order Card */
+.order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.order-card.active {
+    border: 2px solid #27ae60;
+    background: #f0fdf4;
+}
+
+/* Order Header */
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ecf0f1;
+}
+
+.order-id {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.order-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.status-preparing {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-ontheway {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Order Details */
+.order-details {
+    margin-bottom: 15px;
+}
+
+.order-details p {
+    margin: 8px 0;
+    color: #34495e;
+    font-size: 0.95rem;
+}
+
+.order-details strong {
+    color: #2c3e50;
+}
+
+.order-items {
+    margin-top: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.order-items ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+
+.order-items li {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn-accept,
+.btn-delivered {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-accept {
+    background: #3498db;
+    color: white;
+}
+
+.btn-accept:hover:not(:disabled) {
+    background: #2980b9;
+    transform: scale(1.02);
+}
+
+.btn-accept:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-delivered {
+    background: #27ae60;
+    color: white;
+}
+
+.btn-delivered:hover:not(:disabled) {
+    background: #229954;
+    transform: scale(1.02);
+}
+
+.btn-delivered:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .orders-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .delivery-container {
+        padding: 15px;
+    }
+}

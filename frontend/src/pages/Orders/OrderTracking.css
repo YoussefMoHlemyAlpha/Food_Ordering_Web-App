@@ -1,0 +1,192 @@
+.tracking-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--gray);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  color: var(--dark-color);
+  text-decoration: underline;
+}
+
+.tracking-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.tracking-header h2 {
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.order-id {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.progress-track {
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
+  position: relative;
+}
+
+/* Connecting Line */
+.progress-track::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  background: var(--white);
+  padding: 0 10px;
+  width: 25%;
+}
+
+.step-icon {
+  width: 40px;
+  height: 40px;
+  background: #e0e0e0;
+  color: #666;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 3px solid var(--white);
+}
+
+/* Active State */
+.step.active .step-icon {
+  background: var(--secondary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.step p {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.step.active p {
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+.order-summary {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-top: 2rem;
+}
+
+.order-summary h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.summary-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-item-info {
+  display: flex;
+  gap: 10px;
+}
+
+.summary-quantity {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.summary-name {
+  color: var(--dark-color);
+}
+
+.summary-price {
+  font-weight: 600;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 1rem 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+}
+
+.total-price {
+  color: var(--primary-color);
+}
+
+.delivery-info {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+}
+
+.delivery-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-info p {
+  color: var(--gray);
+}
+
+.rate-btn {
+    background-color: #ffc107; /* Gold/Yellow */
+    color: #333; /* Dark text for contrast */
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background 0.2s;
+}
+
+.rate-btn:hover {
+    background-color: #e0a800; /* Darker gold on hover */
+}
