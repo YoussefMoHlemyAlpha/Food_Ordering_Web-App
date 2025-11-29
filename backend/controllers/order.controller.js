@@ -29,7 +29,7 @@ export const createOrder = async (req, res) => {
                 method: paymentMethod || "Cash",
                 status: "Pending"
             },
-            status: "pending" // Ensure this matches your enum update
+            status: "pending" 
         });
 
         await newOrder.save();
@@ -48,6 +48,7 @@ export const createOrder = async (req, res) => {
 export const getUserOrders = async (req, res) => {
     try {
         const orders = await OrderModel.find({ userId: req.user.id }).sort({ createdAt: -1 });
+        if (!orders) return res.status(404).json({ message: "No orders found" });
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -80,6 +81,7 @@ export const updateOrderStatus = async (req, res) => {
             { status },
             { new: true }
         );
+
         res.status(200).json(order);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -90,6 +92,7 @@ export const getAllOrders = async (req, res) => {
         const orders = await OrderModel.find()
             .populate("userId", "firstName email") // Populate user info
             .sort({ createdAt: -1 });
+        if (!orders) return res.status(404).json({ message: "No orders found" });
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ message: error.message });

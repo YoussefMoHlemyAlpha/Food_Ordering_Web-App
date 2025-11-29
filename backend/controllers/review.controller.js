@@ -7,7 +7,6 @@ export const addReview = async (req, res) => {
         const { orderId, menuItemId, rating, comment } = req.body;
         const userId = req.user.id;
 
-        // Validation: Check if the user actually ordered this item and it is delivered
         const order = await OrderModel.findOne({ 
             _id: orderId, 
             userId: userId, 
@@ -19,7 +18,7 @@ export const addReview = async (req, res) => {
             return res.status(400).json({ message: "You can only review items from delivered orders." });
         }
 
-        // Check if already reviewed
+
         const existingReview = await reviewModel.findOne({ userId, orderId, menuItemId });
         if (existingReview) {
             return res.status(400).json({ message: "You have already reviewed this item." });

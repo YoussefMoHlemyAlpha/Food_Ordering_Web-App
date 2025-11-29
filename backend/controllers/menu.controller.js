@@ -23,7 +23,9 @@ export const createMenuItem = async (req, res) => {
 export const getMenuItems = async (req, res) => {
     try {
         const items = await ItemModel.find({ isAvailable: true }).populate("categoryId");
-
+        if (!items) {
+            return res.status(404).json({ message: "No items found" });
+        }
         // Calculate average rating for each item
         const itemsWithRating = await Promise.all(items.map(async (item) => {
             const reviews = await reviewModel.find({ menuItemId: item._id });
