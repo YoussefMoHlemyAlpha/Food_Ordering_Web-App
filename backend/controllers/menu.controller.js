@@ -33,7 +33,7 @@ export const getMenuItems = async (req, res) => {
                 ? reviews.reduce((acc, curr) => acc + curr.rating, 0) / reviews.length
                 : 0;
 
-            return { ...item._doc, averageRating: avgRating.toFixed(1), reviewCount: reviews.length };
+            return { ...item._doc, averageRating: avgRating.toFixed(1), reviewCount: reviews.length }; // spread item properties
         }));
 
         res.status(200).json(itemsWithRating);

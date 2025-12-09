@@ -4,6 +4,7 @@ import PDFDocument from "pdfkit";
 export const getDashboardStats = async (req, res) => {
     try {
         // 1. Total Revenue & Count
+        // aggregates all orders into one document
         const totalStats = await OrderModel.aggregate([
             { $group: { _id: null, totalRevenue: { $sum: "$totalAmount" }, totalOrders: { $sum: 1 } } }
         ]);
@@ -13,11 +14,11 @@ export const getDashboardStats = async (req, res) => {
             {
                 $group: {
                     _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-                    dailyRevenue: { $sum: "$totalAmount" },
-                    orderCount: { $sum: 1 }
+                    dailyRevenue: { $sum: "$totalAmount" }, // total revenue per day
+                    orderCount: { $sum: 1 } // number of orders per day
                 }
             },
-            { $sort: { _id: 1 } },
+            { $sort: { _id: 1 } }, // Sorts by date ascending
             { $limit: 7 }
         ]);
 
@@ -30,7 +31,7 @@ export const getDashboardStats = async (req, res) => {
             pendingOrders: pendingCount,
             dailyStats,
             topSellingItems: await OrderModel.aggregate([
-                { $unwind: "$items" },
+                { $unwind: "$items" }, // breaks down each order’s items array into individual documents.
                 { $group: { _id: "$items.name", totalSold: { $sum: "$items.quantity" } } },
                 { $sort: { totalSold: -1 } },
                 { $limit: 5 }
@@ -130,3 +131,4 @@ export const exportDashboardStatsPDF = async (req, res) => {
         res.status(500).json({ message: "Failed to generate PDF report" });
     }
 };
+

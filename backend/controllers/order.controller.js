@@ -47,7 +47,7 @@ export const createOrder = async (req, res) => {
 
 export const getUserOrders = async (req, res) => {
     try {
-        const orders = await OrderModel.find({ userId: req.user.id }).sort({ createdAt: -1 });
+        const orders = await OrderModel.find({ userId: req.user.id }).sort({ createdAt: -1 }); // from latest to oldest
         if (!orders) return res.status(404).json({ message: "No orders found" });
         res.status(200).json(orders);
     } catch (error) {

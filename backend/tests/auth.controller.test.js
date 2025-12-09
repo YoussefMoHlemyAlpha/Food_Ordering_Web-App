@@ -1,6 +1,7 @@
 import { jest } from '@jest/globals';
 
 // Mock the models and libraries using unstable_mockModule
+//replace a real function, module, or object with a fake version
 jest.unstable_mockModule('../models/user.model.js', () => {
     const mockModel = jest.fn();
     mockModel.findOne = jest.fn();
@@ -29,6 +30,8 @@ jest.unstable_mockModule('jsonwebtoken', () => ({
 }));
 
 // Dynamic imports
+//Dynamic imports ensure that the mocks are applied before the modules are imported.
+
 const { register, login, getProfile } = await import("../controllers/auth.controller.js");
 const { userModel } = await import("../models/user.model.js");
 const bcrypt = (await import("bcryptjs")).default;

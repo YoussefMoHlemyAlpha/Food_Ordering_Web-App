@@ -16,14 +16,14 @@ import deliveryRoutes from "./routes/delivery.routes.js";
 
 const app = express();
 
-// Fix for __dirname in ES Modules
+// Recreate __filename and __dirname in ES Modules.
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Middleware
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve images
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // // Make the "uploads" folder publicly accessible.
 
 // Database
 dbConnection();

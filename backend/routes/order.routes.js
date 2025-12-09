@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/", verifyToken, createOrder);
 router.get("/", verifyToken, getUserOrders);
 router.get("/all", verifyAdmin, getAllOrders)
-router.get("/:id", verifyToken, getOrderById); // New Route
+router.get("/:id", verifyToken, getOrderById); 
 router.put("/:id/status", verifyAdmin, updateOrderStatus);
 
 export default router;
